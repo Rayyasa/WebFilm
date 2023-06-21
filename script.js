@@ -72,6 +72,7 @@ searchButton.addEventListener('click', async function() {
     alert(err);
   }
 });
+
 function getMovies(keyword) {
   return  fetch('http://www.omdbapi.com/?apikey=7211f369&s=' + keyword)
   .then(response => {
@@ -107,13 +108,13 @@ document.addEventListener('click', async function(e) {
 });
 
 function getMovieDetail(imdbid) {
-  fetch('http://www.omdbapi.com/?apikey=7211f369&i=' + imdbid)
+  return  fetch('http://www.omdbapi.com/?apikey=7211f369&i=' + imdbid)
           .then(response => response.json())
           .then( m => m);
          
 }
 
-function updateUIDetail() {
+function updateUIDetail(m) {
   const movieDetail = showMovieDetail(m);
   const modalBody = document.querySelector('.modal-body');
   modalBody.innerHTML = movieDetail;
